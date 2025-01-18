@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #f0f8ff, #e6f7ff);
+            font-family: 'Arial', sans-serif;
+        }
+
+
+                      
+
+     .navbar {
+      background: linear-gradient(90deg, #000428, #004e92); /* Modern Gradient */
+      padding: 1rem;
+      color: white;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white !important;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-link {
+      color: white !important;
+      font-size: 1.1rem;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffdd57 !important;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 1px; 
+      background: #ffdd57;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .dropdown-toggle::after {
+      content: ""; 
+    }
+
+    .dropdown-item:hover {
+      background-color: rgba(255, 221, 87, 0.2); /* Subtle highlight */
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+     
+     .contact-d {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-d:hover {
+      color: #ffdd57;
+      transform: scale(1.1);
+    }
+
+    .contact-d i {
+      font-size: 1.4rem;
+      margin-right: 0.5rem;
+    }
+
+        .container1 {
+            max-width: 600px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input.form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .order-summary {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+
+  
+
+
+
+
+    
+    footer {
+            background: #343a40;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #17a2b8;
+        }
+        .footer-icons i {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: #f8f9fa;
+            transition: color 0.3s;
+        }
+        .footer-icons i:hover {
+            color: #004e92;
+        }
+        .footer-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Safe Carz Limited</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="insuranceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-shield-alt"></i> Insurance Plans
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="insuranceDropdown">
+                <li><a class="dropdown-item" href="vehicle-plans.html">Vehicle</a></li>
+                <li><a class="dropdown-item" href="company-plan.html">Company plan</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+          </ul>
+    
+          <a href="tel:+1234567890" class="contact-d">
+            <i class="fa fa-phone"></i> +123-456-7890
+          </a>
+        </div>
+      </nav>
+
+
+    <div class="container container1">
+        <h1>Checkout</h1>
+        <p class="text-center">Thank you for choosing <strong>Comprehensive Car Insurance</strong>!</p>
+
+        <div class="order-summary">
+            <h4>Your Order Summary:</h4>
+            <p><strong>Plan:</strong> Comprehensive Car Insurance</p>
+            <p><strong>Base Price:</strong> $250/year</p>
+        </div>
+
+    
+        <div class="form-container">
+            <form>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Credit Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter your credit card number" required>
+                </div>
+                <div class="mb-3">
+                    <label for="expiryDate" class="form-label">Expiry Date</label>
+                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="Enter your CVV" required>
+                </div>
+                
+    
+                <button type="button" class="btn btn-primary" onclick="completePurchase()">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    
+      
+     <footer>
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-md-4 footer-section">
+                    <h5>About Safe Carz Limited</h5>
+                    <p>Your trusted partner for vehicle insurance solutions. Providing reliable and affordable insurance plans for all types of vehicles.</p>
+                </div>
+
+    
+                <div class="col-md-4 footer-section">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Insurance Plans</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+    
+                <div class="col-md-4 footer-section">
+                    <h5>Follow Us</h5>
+                    <div class="footer-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p>&copy; 2024 Safe Carz Limited. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function completePurchase() {
+    
+            Swal.fire({
+                title: 'Transaction Successful!',
+                text: 'Thank you for your purchase. Your insurance plan has been activated.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#3085d6',
+                timer: 3000, 
+                showCloseButton: true,
+            }).then(() => {
+                
+                window.location.href = 'thankyou.html'; 
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+
